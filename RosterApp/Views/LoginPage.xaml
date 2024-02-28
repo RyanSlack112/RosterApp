@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RosterApp.Views.LoginPage"
+             Title="">
+    
+    <VerticalStackLayout>
+        
+        <!-- Title of the app centered at the top -->
+        <Label Text="Roster App" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Start"
+               FontSize="Large"
+               Margin="30"/>
+
+        <!-- Label for Username -->
+        <Label Text="Username" 
+               HorizontalOptions="Start" 
+               VerticalOptions="Center"
+               Margin="10"/>
+
+        <!-- Entry for Username -->
+        <Entry x:Name="UsernameEntry" 
+               HorizontalOptions="FillAndExpand" 
+               VerticalOptions="Center"
+               Margin="10"/>
+
+        <!-- Label for Password -->
+        <Label Text="Password" 
+               HorizontalOptions="Start" 
+               VerticalOptions="Center"
+               Margin="10"/>
+
+        <!-- Entry for Password -->
+        <Entry x:Name="PasswordEntry" 
+               IsPassword="True"
+               HorizontalOptions="FillAndExpand" 
+               VerticalOptions="Center"
+               Margin="10"/>
+
+        <!-- Button for Logging In -->
+        <Button Text="Login"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                CornerRadius="20"
+                Margin="50"
+                Clicked="OnLoginClicked"/>
+    </VerticalStackLayout>
+</ContentPage>
