@@ -37,7 +37,7 @@ namespace RosterApp.Models
         /*
          * Used for closing a connection to the database
          */
-        public void CloseConnection(SqlConnection connection)
+        public static void CloseConnection(SqlConnection connection)
         {
             if(connection != null && connection.State != System.Data.ConnectionState.Closed) 
             {
