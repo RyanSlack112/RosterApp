@@ -22,8 +22,8 @@
 
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="0,30">
-            <Button Text="Add to Roster" Clicked="OnAddRosterClicked" HorizontalOptions="CenterAndExpand" Margin="5"/>
-            <Button Text="View Roster" Clicked="OnViewRosterClicked" HorizontalOptions="CenterAndExpand" Margin="5"/>
+            <Button x:Name="AddRosterButton" Text="Add to Roster" Clicked="OnAddRosterClicked" HorizontalOptions="CenterAndExpand" Margin="5"/>
+            <Button x:Name="ViewRosterButton" Text="View Roster" Clicked="OnViewRosterClicked" HorizontalOptions="CenterAndExpand" Margin="5"/>
         </StackLayout>
     </StackLayout>
 

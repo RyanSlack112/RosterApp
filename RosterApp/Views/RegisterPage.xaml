@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RosterApp.Views.RegisterPage"
+             Title="">
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <!-- Username -->
+        <Label Text="Username" />
+        <Entry x:Name="UsernameEntry" />
+
+        <!-- First Name -->
+        <Label Text="First Name" />
+        <Entry x:Name="FirstNameEntry" />
+
+        <!-- Last Name -->
+        <Label Text="Last Name" />
+        <Entry x:Name="LastNameEntry" />
+
+        <!-- Email -->
+        <Label Text="Email" />
+        <Entry x:Name="EmailEntry" />
+
+        <!-- Confirm Email -->
+        <Label Text="Confirm Email" />
+        <Entry x:Name="ConfirmEmailEntry" />
+
+        <!-- Password -->
+        <Label Text="Password" />
+        <Entry x:Name="PasswordEntry" IsPassword="True" />
+
+        <!-- Confirm Password -->
+        <Label Text="Confirm Password" />
+        <Entry x:Name="ConfirmPasswordEntry" IsPassword="True" />
+
+        <!-- Buttons -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End" Spacing="10">
+            <Button Text="Register" Clicked="OnRegisterClicked" HorizontalOptions="FillAndExpand" CornerRadius="20" Margin="0,0,1,0" />
+            <Button Text="Reset" Clicked="OnResetClicked" HorizontalOptions="FillAndExpand" CornerRadius="20" Margin="1,0,1,0" />
+            <Button Text="Cancel" Clicked="OnCancelClicked" HorizontalOptions="FillAndExpand" CornerRadius="20" Margin="1,0,0,0" />
+        </StackLayout>
+
+
+    </VerticalStackLayout>
+</ContentPage>

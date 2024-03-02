@@ -5,25 +5,36 @@ namespace RosterApp.Views;
 
 public partial class LoginPage : ContentPage
 {
-	DatabaseService databaseService;
-    DBFunctions dbFunctions;
+	DatabaseService databaseService; //Database Service Object
+    DBFunctions dbFunctions; //Database Functions Object
 
+    //COnstructor
 	public LoginPage()
 	{
-		InitializeComponent();
-        databaseService = new DatabaseService();
-        dbFunctions = new DBFunctions(databaseService);
-	}
+		InitializeComponent(); //GUI Initialization Function
+        databaseService = new DatabaseService(); //Instantiate Database Service
+        dbFunctions = new DBFunctions(databaseService); //Instantiate Database Functions
+
+        CreateAccountLabel.GestureRecognizers.Add(new TapGestureRecognizer
+        {
+            Command = new Command(OnCreateAccountTapped)
+        });
+    }
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        string username = UsernameEntry.Text;
-        string password = PasswordEntry.Text;
+        string username = UsernameEntry.Text; //Username string is the value of the Username textbox
+        string password = PasswordEntry.Text; //Password string is the value of the Password textbox
 
+        /*
+         * Perform Login Check
+         * If successful, display message and navigate to next page.
+         * if unsuccessful, display error message.
+         */
         if(dbFunctions.Login(username, password))
         {
             await DisplayAlert("Alert", "You have successfully Logged In!", "OK");
-            await Navigation.PushAsync(new HomePage());
+            await Navigation.PushAsync(new HomePage(username));
         }
         else
         {
@@ -31,7 +42,8 @@ public partial class LoginPage : ContentPage
             PasswordEntry.Text = "";
         }
 
-		/*using(SqlConnection connection = databaseService.ConnectToDB())
+		/* Debug
+		 * using(SqlConnection connection = databaseService.ConnectToDB())
 		{
             if (databaseService.CheckDatabaseConnection(connection))
             {
@@ -42,5 +54,10 @@ public partial class LoginPage : ContentPage
                 await DisplayAlert("Alert", "The Connection Was Unsuccessful", "OK");
             }
         }*/
+    }
+
+    private async void OnCreateAccountTapped()
+    {
+        await Navigation.PushAsync(new RegisterPage());
     }
 }

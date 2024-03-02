@@ -45,5 +45,12 @@
                 CornerRadius="20"
                 Margin="50"
                 Clicked="OnLoginClicked"/>
+
+        <!-- Label for creating an account -->
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="Not Registered? " />
+            <Label Text=" Create an Account" TextColor="Blue" FontAttributes="Bold" x:Name="CreateAccountLabel" />
+        </StackLayout>
+
     </VerticalStackLayout>
 </ContentPage>
