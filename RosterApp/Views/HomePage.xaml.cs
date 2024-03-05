@@ -25,6 +25,6 @@ public partial class HomePage : ContentPage
 	 */
 	private async void OnViewRosterClicked(object sender, EventArgs e)
 	{
-		await Navigation.PushAsync(new ViewRosterPage());
+		await Navigation.PushAsync(new ViewRosterPage(_username));
 	}
 }

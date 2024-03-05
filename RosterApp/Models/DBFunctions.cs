@@ -53,11 +53,11 @@ namespace RosterApp.Models
 
         public bool Register(string username, string firstname, string lastname, string email, string password)
         {
-            using(SqlConnection connection = _databaseService.ConnectToDB())
+            using (SqlConnection connection = _databaseService.ConnectToDB())
             {
                 string query = "INSERT INTO Users(username, firstName, lastName, email, password) VALUES (@username, @firstName, @lastName, @email, @password)";
                 string hashedPassword = SecureLogin.HashPassword(password);
-                using(SqlCommand cmd = new SqlCommand(query,connection))
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@firstName", firstname);
@@ -87,6 +87,37 @@ namespace RosterApp.Models
                     return true;
                 }
             }
+        }
+
+        public List<RosterData> GetRosterEntries(string username, DateTime date)
+        {
+            DateTime day;
+            TimeSpan startTime;
+            TimeSpan endTime;
+            List<RosterData> rosterDataList = new List<RosterData>(); //List of RosterData Objects>
+
+            using (SqlConnection connection = _databaseService.ConnectToDB())
+            {
+                day = date;
+                string query = "SELECT day, startTime, endTime FROM RosterData WHERE username = @username AND day = @day";
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@day", day);
+                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            startTime = reader.GetTimeSpan(1);
+                            endTime = reader.GetTimeSpan(2);
+
+                            RosterData rosterData = new RosterData(username, day, startTime, endTime);
+                            rosterDataList.Add(rosterData);
+                        }
+                    }
+                }
+            }
+            return rosterDataList;
         }
     }
 }
